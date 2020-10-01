@@ -7,14 +7,10 @@
     "copyFormatting": false,
     "profiles":
     {
-        "defaults":
-        {
-            // Put settings here that you want to apply to all profiles.
-        },
+        "defaults": {},
         "list":
         [
             {
-                // Make changes here to the powershell.exe profile.
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "PowerShell Core",
                 "commandline": "pwsh.exe",
@@ -63,9 +59,6 @@
             }
         ]
     },
-
-    // Add custom color schemes to this array.
-    // To learn more about color schemes, visit https://aka.ms/terminal-color-schemes
     "schemes": [
         {
           "name": "3024 Day",
