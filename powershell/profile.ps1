@@ -3,7 +3,7 @@ Import-Module Profile
 function Prompt {
   $ActualPath = (Get-Location).Path
 
-  if(Get-HasElevatedUser){
+  if(Get-HasPermissionElevated){
     Write-Host " $($ENV:USERNAME) " -NoNewline -ForegroundColor 'red'
     $host.UI.RawUI.WindowTitle = "[Admin] $ENV:USERNAME in $ActualPath"
   } else {
