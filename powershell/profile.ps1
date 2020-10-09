@@ -1,8 +1,17 @@
-$curUser= (Get-ChildItem Env:\USERNAME).Value
+Import-Module .\modules\permissions.psm1
+
 function Prompt {
+  
   $ActualPath = (Get-Location).Path
-  Write-Host "$($ENV:USERNAME) in $((Get-Location).Path)" -foregroundColor "white"
+  
+  if(Get-HasElevatedPermission){
+    Write-Host "$($ENV:USERNAME)" -NoNewline -ForegroundColor 'green'
+  } else {
+    Write-Host "$($ENV:USERNAME)" -NoNewline -ForegroundColor 'red'
+  }
+  Write-Host "in $((Get-Location).Path)" -foregroundColor "white"
   Write-Host -NoNewline "" -foregroundColor "Yellow"
+
   $host.UI.RawUI.WindowTitle = "$ENV:USERNAME in $ActualPath"
   Return " "
 }
