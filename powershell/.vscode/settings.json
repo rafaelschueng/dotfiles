@@ -1,0 +1,6 @@
+{
+    "files.autoSaveDelay": 2000,
+    "workbench.editor.decorations.colors": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.decorations.badges": true
+}
