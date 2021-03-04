@@ -11,7 +11,7 @@ function Get-WhereIsApplication {
 
   foreach ($path in $Env:Path.Split(";")) {
     if ((Test-Path $path)) {
-      Get-ChildItem $path -Filter $Name
+      Get-ChildItem $path -Filter "$($Name).exe"
     }
   }
 }
