@@ -4,7 +4,9 @@ if ($host.Name -eq "ConsoleHost") {
   Set-PSReadLineOption -PredictionSource History
 }
 
-Set-Alias -Name "whereis" -Value Get-WhereIsApplication -Option ReadOnly 
+Set-Alias -Name "whereis" -Value Get-WhereIsApplication -Option ReadOnly
+
+$actualPath = New-Object -TypeName "System.Text.StringBuilder"
 
 function Prompt {
 
@@ -12,14 +14,14 @@ function Prompt {
     Import-Module posh-git
   }
 
-  $actualPath = New-Object -TypeName "System.Text.StringBuilder"
-
   if ((Get-Location).Path.Split("\").Length -gt 2) {
     $_folders = (Get-Location).Path.Split("\");
+    [void]$actualPath.Clear();
     [void]$actualPath.AppendFormat("..\{0}\{1}", $_folders[-2], $_folders[-1])
   }
   else {
     $_folders = (Get-Location).Path.Split("\");
+    [void]$actualPath.Clear();
     [void]$actualPath.AppendFormat("{0}\", $_folders[0])
   }
 
@@ -34,7 +36,7 @@ function Prompt {
   } 
   
   #User type space
-  Write-Host "in $($ActualPath)" -ForegroundColor "white" -NoNewline
+  Write-Host "in $($actualPath.ToString())" -ForegroundColor "white" -NoNewline
   Write-VcsStatus
   Write-Host "`n>" -ForegroundColor "Yellow" -NoNewline
 
