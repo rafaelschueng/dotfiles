@@ -1,7 +1,12 @@
 if ($host.Name -eq "ConsoleHost") {
   Import-Module Profile
   Import-Module PSReadLine
-  Set-PSReadLineOption -PredictionSource History
+  
+  #Key Bindings for PSReadLine
+  Set-PSReadLineOption -PredictionSource History -Colors @{ InlinePrediction = "#757575"}
+  Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+  Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
 }
 
 Set-Alias -Name "whereis" -Value Get-WhereIsApplication -Option ReadOnly
