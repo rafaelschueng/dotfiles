@@ -4,12 +4,15 @@ if ($host.Name -eq "ConsoleHost") {
   Set-PSReadLineOption -PredictionSource History
 }
 
+Set-Alias -Name "whereis" -Value Get-WhereIsApplication -Option ReadOnly 
+
 function Prompt {
-  $ActualPath = (Get-Location).Path
 
   if ((Test-Path '.git')) {
     Import-Module posh-git
   }
+
+  $ActualPath = (Get-Location).Path
 
   if (Get-HasElevatedUser) {
     Write-Host "[ADMIN] $($ENV:USERNAME) " -NoNewline -ForegroundColor 'red'
