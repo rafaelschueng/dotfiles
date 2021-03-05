@@ -17,6 +17,7 @@ function Prompt {
 
   if ((Test-Path '.git')) {
     Import-Module posh-git
+    $GitPromptSettings.EnableWindowTitle = $false
   }
 
   if ((Get-Location).Path.Split("\").Length -gt 2) {
